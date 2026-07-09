@@ -10,9 +10,12 @@ import serviceRoutes from "./routes/serviceRoute.js";
 
 import paymentRoutes from "./routes/paymentRoute.js";
 
+import saleRoutes from "./routes/saleRoute.js";
+
 import "./models/Users.js";
 import "./models/Services.js";
 import "./models/PaymentMethod.js";
+import "./models/index.js";
 
 dotenv.config();
 
@@ -28,6 +31,8 @@ app.use("/api", loginRoutes);
 app.use("/api", serviceRoutes);
 
 app.use("/api", paymentRoutes);
+
+app.use("/api", saleRoutes);
 
 // Database connection
 const start = async () => {
