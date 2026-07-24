@@ -9,7 +9,7 @@ import auth from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 router.post("/register", validate(registerSchema), registerUser);
-router.get("/allUsers", auth, role("admin"), getUsers);
+router.get("/allUsers",  getUsers);
 router.delete("/deleteUser/:id", deleteUser);
 
 export default router;

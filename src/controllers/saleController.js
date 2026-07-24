@@ -203,15 +203,15 @@ export const dailyReport = async (req, res) => {
         const where = {};
 
         if (startDate && endDate) {
-        const start = new Date(startDate);
-        start.setHours(0, 0, 0, 0);
+            const start = new Date(startDate);
+            start.setHours(0, 0, 0, 0);
 
-        const end = new Date(endDate);
-        end.setHours(23, 59, 59, 999);
+            const end = new Date(endDate);
+            end.setHours(23, 59, 59, 999);
 
-        where.createdAt = {
-            [Op.between]: [start, end],
-        };
+            where.createdAt = {
+                [Op.between]: [start, end],
+            };
         }
 
         const sales = await Sales.findAll({
@@ -220,9 +220,9 @@ export const dailyReport = async (req, res) => {
 
         const totalSales = sales.length;
 
-        const totalIncome = sales.reduce((sum,sale)=>{
+        const totalIncome = sales.reduce((sum, sale)=>{
             return sum + sale.amountPaid;
-        },0);
+        }, 0);
 
         res.json({
             startDate,

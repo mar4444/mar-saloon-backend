@@ -22,6 +22,14 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
+// Enable CORS
+app.use(
+  cors({
+    origin: "http://localhost:5173", // frontend URL
+    credentials: true,
+  })
+);
+
 const PORT = process.env.PORT;
 
 // Routes
@@ -38,7 +46,7 @@ app.use("/api", saleRoutes);
 const start = async () => {
   try {
     await sequelize.authenticate();
-    console.log("Database connected!");
+    console.log("Database connected!!");
 
     await sequelize.sync();
     // await sequelize.sync({ alter: true });
